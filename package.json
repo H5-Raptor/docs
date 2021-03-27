@@ -1,0 +1,16 @@
+{
+  "name": "raptor-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "markdown-it-imsize": "^2.0.1",
+    "vuepress": "^1.8.2"
+  }
+}
