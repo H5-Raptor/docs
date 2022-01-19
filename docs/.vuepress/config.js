@@ -40,6 +40,7 @@ module.exports = {
         collapsable: false, // 可选的, 默认值是 true,
         children: [
           "/guide/",
+          "/guide/glossary",
           "/guide/quick-start",
           "/guide/group-manage",
           "/guide/component-manage",
