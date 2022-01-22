@@ -1,81 +1,88 @@
 # 布局组件
-布局组件也叫容器组件，但布局二字会更加直观的凸显设计布局组件的目的。
+布局组件也叫容器组件，主要用于组件嵌套场所，`组件嵌套`与`组件通信`是组件高复用的前提条件，
+`组件嵌套`功能避免了设计`重型业务组件`，极大的减少`大粒度组件`存在。
 
-`组件嵌套`与`组件通信`是组件高复用的前提条件，`组件嵌套`功能避免了设计重型`业务组件`，极大的减少`大粒度组件`存在。
+::: tip
+`布局组件`另一个价值体现在`布局`能力上，实现 PC 端页面的组件化搭建。
+:::
 
 ## 编写布局组件
-有人说，你想成为什么样的人不在于别人评价，而在于自我定位。
+以`Tabs 组件`为例，设计一个可调整 Tab 数量且最多支持 4 栏的 Tabs 组件，其拥有 4 个插槽位。JSON Schema ↓
+```json
+{
+  "title": "组件编辑",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "tabNum": {
+      "title": "tab 个数",
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 4,
+      "default": 3
+    }
+  }
+}
+```
 
-同样适用于布局组件，拿Vue来说，你把组件当做布局组件，在组件中直接使用slot（Vue中用来接收子组件的插槽），你开发的就是布局组件。
-
-### tab分栏组件Vue版
-以下是一个最多支持4栏的tab分栏组件，拥有4个插槽位。插槽必须命名，为了统一，哪怕只有一个插槽也必须命名插槽位。
+### Tabs 组件 Vue 版
+插槽必须命名，哪怕只有一个，这里只展示部分源码 ↓
 ```Vue
 <template>
   <div class="tab-container">
-    <ul class="tab-list"
-        :style="getTabGroupStyle()">
+    <ul class="tab-list">
       <li
           class="tab-item"
           v-for="(item, index) in tabNum"
           :key="index"
-          :style="getTabStyle(index)"
-          @click="clickTab(index)">{{ raptorLang.tabTxt[index] }}</li>
+          @click="clickTab(index)"
+      >
+        {{ index }}
+      </li>
     </ul>
-
-    <div
-        class="tab-content"
-        v-show="activeIndex === 0">
-      <slot name="0"></slot>
+    <div class="tab-content" v-show="activeIndex === 0">
+      <slot name="one"></slot>
     </div>
-    <div
-        class="tab-content"
-        v-show="activeIndex === 1">
-      <slot name="1"></slot>
+    <div class="tab-content" v-show="activeIndex === 1">
+      <slot name="two"></slot>
     </div>
-    <div
-        class="tab-content"
-        v-show="activeIndex === 2">
-      <slot name="2"></slot>
+    <div class="tab-content" v-show="activeIndex === 2">
+      <slot name="three"></slot>
     </div>
-    <div
-        class="tab-content"
-        v-show="activeIndex === 3">
-      <slot name="3"></slot>
+    <div class="tab-content" v-show="activeIndex === 3">
+      <slot name="four"></slot>
     </div>
   </div>
 </template>
 ```
 
-### tab分栏组件React版
-React通过props.children接收子组件，同样必须命名`插槽位`。children是一个key=>children子组件列表的集合。
+### Tabs 组件 React 版
+React 没有 slot 概念，设计为通过 props.children 接收子组件，children 是一个 key => children 子组件列表的集合。
 ```jsx
 function App(props) {
   const {
     children = {},
+    tabNum,
   } = props;
   const [activeIndex, setActiveIndex] = useState(0)
-  const childrenName = ['one', 'two', 'three', 'four', 'five']
+  const childrenName = ['one', 'two', 'three', 'four']
 
   return (
     <div className="tab-container">
-      <ul className="tab-list"
-        style={getTabGroupStyle()}>
+      <ul className="tab-list">
         {
           (new Array(tabNum)).fill(0).map((item, index) => {
             return (
               <li
                 className="tab-item"
                 key={index}
-                style={getTabStyle(index)}
                 onClick={e => clickTab(index)}>
-                  {raptorLang.tabTxt[index] }
+                  {index}
               </li>
             )
           })
         }
       </ul>
-
       <div className="tab-content">
         {
           children && children[childrenName[activeIndex]]
@@ -85,8 +92,14 @@ function App(props) {
   )
 }
 ```
-## 申明布局组件
-组件在注册时，slot字段用来申明、标记布局组件，值是逗号拼接的插槽位名字。如`one,two,three`
+## 布局组件 JSON-Schema
+布局组件为何能接受到子组件，子组件又是怎样被编辑进去？
+
+在发布组件时，`slot`字段用来申明布局组件的`插槽`位信息，值是以逗号拼接的插槽位名字，如`one,two,three`或者`...`
+![slot字段](/docs/image/slot.png)
+
+当编辑组件时，结构操作区会自动展开其插槽位，为`添加子组件`提供了交互解决方案。
+![slot tres结构](/docs/image/slot-tree.png)
 
 ## 布局组件的妙用
 1. 弹窗布局组件

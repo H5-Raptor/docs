@@ -1,69 +1,60 @@
-# 快速上手
-如果是初次接入，需要先建立业务组，再为组注册需要的组件，之后才可以建立 H5。
+# 快速搭建
 
-![使用流程](/docs/image/liu-cheng.png)
+## 新建 H5
+新建 H5 有以下 2 种方式：
+#### 一、全新创建
+1. 店家`新建 H5`
+2. 选择业务组（用户已加入）
+3. 选择 H5 类型
+4. 选择编译模板
 
-## 业务组准备
-业务的开始伴随业务组的建立及其相关配置管理。
+![new-h5](/docs/image/new-h5.png)
 
-![新建组](/docs/image/new-group.png)
+#### 二、复制创建
+如已存在相似 H5 场景，可以直接复制目标，新建的 H5 将立即获得与目标一样的配置。
 
-### 组基本信息
-![组基本信息](/docs/image/group-base.png)
+![copy-h5](/docs/image/copy-h5.png)
 
-### 组成员
-![新增组员](/docs/image/new-member.png)
+## 编辑页
+页面从上到下，从左到右依次为
+1. 操作栏
+2. 组件类型菜单
+3. 组件列表
+4. 实时预览
+5. 结构操作
+6. 编辑面板
 
-### 组件类型
-![新建组件类型](/docs/image/new-type.png)
+![edit-page](/docs/image/edit-page.png)
 
-### 主题色
-![新建主题色](/docs/image/new-theme.png)
+## 全局配置
+全局配置配置面板中主要包含：
+1. 主题色配置，包含静态主题色、动态图片主题色。
+2. 语种模式切换，如果是多语种模式将展示多语言文件的下载、上传按钮。
+3. SEO内容配置，在编译时将写入到对应meta标签。
 
-### 编译模板
-![新建编译模板](/docs/image/new-template.png)
+![global-config](/docs/image/global-config.png)
 
-::: tip
-当前官网不提供新建业务组操作，主要因为编译模板有较大`发挥空间`，恶意用户可能会尝试各种攻击方式。害人之心不可有，防人之心不可无。
-:::
+## 组件（插件）配置
+组件功能设计时应当考虑适当的伸缩能力，考虑将哪些内容、属性、逻辑对外开放编辑，
+#### 一、组件 Props 编辑
 
-开发者发布组件到中台组件市场，可注册组件指定版本到业务组中。
+<img src="/docs/image/component-config.png" width="500px" />
 
-产品、运营等用户新建H5，挑选需要的组件、插件并编辑其相关属性，配置组件间通信数据和父子关系。
+#### 二、组件通信编辑
+![event-config](/docs/image/event-config.png)
 
-用户的使用流程如下：
+## 通用编辑
 
-## 组件准备
-Raptor 特性之一就是`以组件为基础单位按版本迭代管理`，组件的每一个版本都是独立的个体。
-为业务组注册组件是一个长期过程，任何组件版本更新并验证无误后，都需要再次注册该版本。
+<img src="/docs/image/common-config.png" width="500px" />
 
-### 发布组件
-发布或更新组件有 2 种渠道。
-1. 平台表单提交。
-![新建编译模板](/docs/image/new-component.png)
+## 访问
 
-2. Open Api 提交。接口地址`http://www.h5raptor.com/api/components`，`post`请求，header 头带上`token`，`body`结构如下：
-```json
-{
-  "componentName": "",
-  "desc": "",
-  "version": "1.0.0",
-  "config": {},
-  "slots": "...",
-  "readme": "",
-  "dependencies": {},
-  "jsUrl": "",
-  "esmUrl": "",
-  "cssUrl": "",
-  "langJson": {},
-  "cover": ""
-}
-```
-登录后在个人头像的二级菜单点击可获取 token。
-![token](/docs/image/token.png)
+<img src="/docs/image/browse-select.png" width="200px" />
 
-### 注册组件
-组件发布在组件市场，只有将组件注册到业务组下，才能在该组编辑 H5 时挑选该组件（该版本）。
-![组件注册](/docs/image/register.png)
+## 发布
 
-## 搭建 H5
+<img src="/docs/image/publish.png" width="500px" />
+
+#### 预发布
+
+#### 发布

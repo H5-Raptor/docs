@@ -7,7 +7,7 @@ const path = require('path');
 
 module.exports = {
   title: "H5-Raptor",
-  description: "组件化H5页面搭建平台",
+  description: "H5 页面组件化搭建中台",
   dest: path.join(process.cwd(), 'dist'),
   serviceWorker: true,
   displayAllHeaders: true,
@@ -25,7 +25,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "使用指南", link: "/guide/" },
-      { text: "H5-Raptor可视化平台", link: 'http://www.h5raptor.com' },
+      { text: "H5-Raptor", link: 'http://www.h5raptor.com' },
       {
         text: 'GitHub',
         link: 'https://github.com/h5-raptor/docs'
@@ -41,6 +41,7 @@ module.exports = {
         children: [
           "/guide/",
           "/guide/glossary",
+          "/guide/preparation",
           "/guide/quick-start",
           "/guide/group-manage",
           "/guide/component-manage",
@@ -51,16 +52,16 @@ module.exports = {
         title: "开发指南", // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
-          "/dev/prepare",
+          "/dev/",
           "/dev/component",
           "/dev/JSON-Schema",
-          "/dev/publish",
-          "/dev/i18n",
-          "/dev/theme-color",
           "/dev/layout-component",
           "/dev/communication",
           "/dev/emit",
           "/dev/action",
+          "/dev/i18n",
+          "/dev/theme-color",
+          "/dev/publish",
           "/dev/utility-component",
           "/dev/plugin",
         ]
