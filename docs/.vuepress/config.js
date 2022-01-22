@@ -57,12 +57,9 @@ module.exports = {
           "/dev/JSON-Schema",
           "/dev/layout-component",
           "/dev/communication",
-          "/dev/emit",
-          "/dev/action",
           "/dev/i18n",
           "/dev/theme-color",
           "/dev/publish",
-          "/dev/utility-component",
           "/dev/plugin",
         ]
       },

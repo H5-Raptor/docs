@@ -1,4 +1,4 @@
-# JSON-Schema动态表单
+# JSON-Schema 
 Raptor 采用开源库 [vue-json-schema-form](https://github.com/lljj-x/vue-json-schema-form) 解析，支持丰富的控件类型，
 同时支持扩展类型。
 
