@@ -83,8 +83,23 @@ module.exports = {
         title: "深入理解", // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
+          "/proficient/component-base",
           "/proficient/framework",
-          "/proficient/group-config"
+        ]
+      },
+      {
+        title: "高阶指南", // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        children: [
+          "/advanced/",
+        ]
+      },
+      {
+        title: "常见问题", // 必要的
+        collapsable: false, // 可选的, 默认值是 true,
+        children: [
+          "/question/",
+          "/question/build",
         ]
       },
     ]
