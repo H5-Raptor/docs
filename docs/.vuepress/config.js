@@ -83,7 +83,7 @@ module.exports = {
         title: "高阶指南", // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
-          "/advanced/",
+          "/advanced/code",
         ]
       },
       {
