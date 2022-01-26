@@ -1,15 +1,14 @@
 # 组件通信
-![组件通信](/raptor-docs/image/communication.jpg =1000x350)
+![组件通信](/docs/image/communication.jpg =1000x350)
 
-# 组件通信-主动-发射
-一个巴掌拍不响，组件的通信有主动发起方就有被动执行(接收)方。
+组件化搭建页面时，页面并不简单的像乐高积木一样堆叠，各组件之间还有跨越空间上的消息往来，这个过程称之为组件通信。
+比如点击按钮组件时，触发表单组件提交，表单提交成功后，触发抽奖券发放。
 
-在组件内部某些交互监听、数据监听、业务逻辑的特殊时刻等，通过emit(`${emitName}`, ${data})
-完成发射。由于不同框架内置的能力不同，下面以Vue和React阐述。
+## 主调方与被调方
+主动发起通信的一方称之为`主调方`，其通信对象称之为`被调方`。
+`主调方`组件在其关键时机通过调用`emit`发起，下面以 Tabs 组件为例。
 
-## Vue3 emit
-emit是Vue自支持的能力，但Vue3和Vue2略有不同。
-我们以tab分栏组件部分代码为例，点击tab时对外emit通知。
+#### Vue3
 ```js
 export default {
   name: 'simple-tab',
@@ -34,7 +33,7 @@ export default {
 };
 ```
 
-## Vue2 emit
+#### Vue2
 ```js
 export default {
   name: 'vue2-simple-tab',
@@ -54,8 +53,9 @@ export default {
   }
 };
 ```
-## React emit
-由于React没有emit系统，但React极其灵活，我们约定一个名为`emit`的props，组件都会收到这个参数。
+#### React
+React 没有 emit 系统，Raptor 会为组件传递名为`emit`的 props。
+
 ```jsx
 function App(props, ref) {
   const {
@@ -63,7 +63,6 @@ function App(props, ref) {
     emit
   } = props;
   const [activeIndex, setActiveIndex] = useState(0)
-  const childrenName = ['one', 'two', 'three', 'four', 'five']
 
   const clickTab = (index) => {
     emit('clickTab', {index})
@@ -85,24 +84,37 @@ function App(props, ref) {
 export default App
 ```
 
-::: warning 提示
-这里的tab组件设计成既可发射emit通信，又可接收通信做action。
+::: tip
+以上 Tabs 组件既可作为主调方（内部有调用 emit）又能做被调方（对外提供了组件内部方法）。
 :::
 
-## 组件通信-被动-动作
-组件通信的action方，需要提供相关方法对外供调用。
+## 通信声明
+组件调用 emit 以及对外提供方法供调用，表明组件具备通信的能力，同时，组件还需要为可视化搭建页面提供通信声明，
+声明的目的是提供可视化交互配置，以便用户能够配置组件的通信数据。
 
-## Vue action
-参考Vue3/Vue2 emit示例代码。
+```json
+{
+  "title": "Tabs 组件编辑",
+  "type": "object",
+  "required": [],
+  "properties": {},
+  "events": {
+    "emit": {
+      "clickTab": {
+        "title": "点击tab标签"
+      }
+    },
+    "action": {
+      "setActive": {
+        "title": "切换显示tab标签"
+      }
+    }
+  }
+}
+```
 
-## React action
-由于React有function（无状态）和class组件之分，由于无状态组件没有实例，
-想让外界调用到组件的方法，需要使用HOOK中的useImperativeHandle，
+## React 说明
+由于 React 有 Function（无状态）和 Class 组件之分，由于无状态组件没有实例，
+想让外界调用到组件的方法，需要使用 Hooks 中的 useImperativeHandle，
 
 可查阅 [call-child-method-from-parent](https://zh-hans.reactjs.org/docs/hooks-reference.html#useimperativehandle)
-
-写法参考React emit中的代码示例。
-
-::: warning 提示
-作为业务组内第一个了解本中台的你，强烈建议将使用文档完整过目一遍。
-:::

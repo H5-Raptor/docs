@@ -64,18 +64,10 @@ module.exports = {
         ]
       },
       {
-        title: "命令式开发环境", // 必要的
-        collapsable: false, // 可选的, 默认值是 true,
-        children: [
-          "/dev/command",
-        ]
-      },
-      {
         title: "设计指南", // 必要的
         collapsable: false, // 可选的, 默认值是 true,
         children: [
-          "/design/",
-          "/design/px",
+          "/design/size",
           "/design/theme-color",
         ]
       },
