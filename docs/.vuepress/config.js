@@ -76,6 +76,7 @@ module.exports = {
         collapsable: false, // 可选的, 默认值是 true,
         children: [
           "/advanced/code",
+          "/advanced/utils-plugin",
         ]
       },
       {
