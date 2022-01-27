@@ -77,6 +77,7 @@ module.exports = {
         children: [
           "/advanced/code",
           "/advanced/utils-plugin",
+          "/advanced/build-template",
         ]
       },
       {
