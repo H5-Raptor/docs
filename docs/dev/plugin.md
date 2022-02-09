@@ -70,3 +70,7 @@ myPlugin.isPlugin = true;
   }
 }
 ```
+
+::: tip
+插件可对外返回多个内部方法，
+:::
