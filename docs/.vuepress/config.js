@@ -61,6 +61,7 @@ module.exports = {
           "/dev/theme-color",
           "/dev/publish",
           "/dev/plugin",
+          "/dev/composite",
         ]
       },
       {
