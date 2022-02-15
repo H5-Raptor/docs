@@ -87,6 +87,9 @@ module.exports = {
         children: [
           "/proficient/component-base",
           "/proficient/framework",
+          "/proficient/custom-render",
+          "/proficient/theme",
+
         ]
       },
       {

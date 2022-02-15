@@ -114,7 +114,7 @@ export default App
 ```
 
 ## React 说明
-由于 React 有 Function（无状态）和 Class 组件之分，由于无状态组件没有实例，
-想让外界调用到组件的方法，需要使用 Hooks 中的 useImperativeHandle，
+React 有 Function（无状态）和 Class 组件之分，由于无状态组件没有实例，
+外界如需调用组件的方法，需要使用 Hooks 中的 useImperativeHandle，
 
 可查阅 [call-child-method-from-parent](https://zh-hans.reactjs.org/docs/hooks-reference.html#useimperativehandle)

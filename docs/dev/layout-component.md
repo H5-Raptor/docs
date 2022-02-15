@@ -57,7 +57,7 @@
 ```
 
 ### Tabs 组件 React 版
-React 没有 slot 概念，设计为通过 props.children 接收子组件，children 是一个 key => children 子组件列表的集合。
+React 没有 slot 概念，约定通过 props.children 接收子组件，children 是一个 key => children 子组件列表的集合。
 ```jsx
 function App(props) {
   const {
