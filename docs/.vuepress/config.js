@@ -43,8 +43,7 @@ module.exports = {
           "/guide/glossary",
           "/guide/preparation",
           "/guide/quick-start",
-          "/guide/group-manage",
-          "/guide/component-manage",
+          "/guide/manage",
           "/guide/other-usage",
         ]
       },
