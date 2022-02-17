@@ -44,7 +44,7 @@ module.exports = {
           "/guide/preparation",
           "/guide/quick-start",
           "/guide/manage",
-          "/guide/other-usage",
+          "/guide/advance-usage",
         ]
       },
       {
