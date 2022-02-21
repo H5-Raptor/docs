@@ -45,7 +45,7 @@ document.getComponentById('h56').on('click', function() {
     document.getComponentById('p78').target.setVisible(true);
   }
 });
-
+// 监听抽奖插件成功 or 失败消息
 document.getComponentById('p78').on('success', function() {
   // 端内弹窗提示中奖（x90 是弹窗组件在页面的 hashId，一个组件可以在页面复用多次，hashId 不同）
   document.getComponentById('x90').target.setVisible(true);
@@ -83,5 +83,5 @@ document.getElementById('x98').addEventListener('click', function (){
 ![show-readme](/docs/image/show-readme.png)
 
 ::: tip
-组件的 hashId 将渲染给组件最外层 DOM 标签上的 id 属性，由于组件可能在页面内被多次使用，开发切记最好不要在组件内给标签使用 id。
+组件的 hashId 将渲染给组件最外层 DOM 标签上的 id 属性，由于组件可能在页面内被多次使用，开发者切记最好不要在组件内给标签使用 id。
 :::
