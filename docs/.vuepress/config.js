@@ -7,7 +7,7 @@ const path = require('path');
 
 module.exports = {
   title: "H5-Raptor",
-  description: "H5 页面组件化搭建中台",
+  description: "H5 组件化中台",
   dest: path.join(process.cwd(), 'dist'),
   serviceWorker: true,
   displayAllHeaders: true,
