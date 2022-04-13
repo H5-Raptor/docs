@@ -58,8 +58,8 @@ module.exports = {
           "/dev/communication",
           "/dev/i18n",
           "/dev/theme-color",
-          "/dev/publish",
           "/dev/plugin",
+          "/dev/publish",
         ]
       },
       {
