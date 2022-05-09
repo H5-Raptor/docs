@@ -36,6 +36,9 @@ Raptor 并不提供组件，完全由业务自行归类、提炼、设计和开�
 
 <video width="740px" controls="controls" src="https://raptor-1254302757.cos.ap-guangzhou.myqcloud.com/website/video/base.mp4" />
 
+## 架构图
+![jiagoutu](/docs/image/jiagou.png)
+
 ::: tip
 官方指南假设你已了解关于组件化、低码和可视化相关知识。如果你此前从未有过接触，可以先行了解后再回顾本指南。
 :::
