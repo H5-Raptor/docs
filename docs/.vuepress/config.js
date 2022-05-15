@@ -88,6 +88,7 @@ module.exports = {
           "/proficient/custom-render",
           "/proficient/theme",
           "/proficient/communication",
+          "/article/i18n",
         ]
       },
       {

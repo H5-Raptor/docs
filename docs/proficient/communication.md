@@ -44,9 +44,10 @@ event 中心接收组件的通信配置，为此包装 emit 方法传入组件�
 需要注意的是，通信的主调方只需要 `emit`，被调方只需保证方法能被外界访问到，React 函数组件需要使用 `useImperativeHandle`。
 ```jsx
 // 截取部分代码
-function App(props) {
+function SingleButton(props) {
   const {
-    emit
+    emit,
+    raptorLang
   } = props;
   useImperativeHandle(ref, () => ({
     setButtonText
@@ -65,7 +66,7 @@ function App(props) {
         onClick={clickHandle}
         style={getStyle()}
       >
-        {text || raptorLang.buttonText}
+        {buttonText || raptorLang.buttonText}
       </a>
     </div>
   )
@@ -83,3 +84,25 @@ Raptor 组件通信方案于组件开发来说，主调方 `emit`，被调方只
 ![通信](/docs/image/event2.png)
 
 相比于 Raptor 现在的实现，本通信方案更加简单、美观、易理解。
+
+组件开发者在编码风格上维持易于理解的发布-订阅。
+```js
+// A 抽奖组件，对外提供抽奖 API
+function draw() {
+  console.log('3，抽奖>>>>');
+};
+// 1，on 是包装后的，其根据该组件的 hashId 重新订阅 ${hashId}-draw 消息。
+events.on('draw', function(){
+  console.log('2，收到消息，准备抽奖>>>>');
+  draw();
+});
+```
+```js
+// B 按钮组件，发布 draw 消息。
+function onClick() {
+  console.log('1，发布抽奖消息>>>>');
+  // 1，emit 是包装后的，其根据该组件 'draw' 的通信配置，找到被调方信息。
+  // 2，发布 ${hashId}-draw 消息。
+  events.emit('draw');
+};
+```
