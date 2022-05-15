@@ -87,7 +87,7 @@ module.exports = {
           "/proficient/framework",
           "/proficient/custom-render",
           "/proficient/theme",
-
+          "/proficient/communication",
         ]
       },
       {
